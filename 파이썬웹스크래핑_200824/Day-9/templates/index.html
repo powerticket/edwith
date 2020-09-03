@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomad News | Popular</title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Nomad News</h1>
+      {% if context.order_by == 'new' %}
+        <div>
+                Order by:
+          
+            <a href="/?order_by=popular">Popular</a>          
+          |          
+            <strong>New</strong>
+        </div>        
+      {% else %}
+        <div>
+          Order by:          
+            <strong>Popular</strong>          
+          |          
+            <a href="/?order_by=new">New</a>                
+        </div>        
+      {% endif %}
+  </header>
+  <main>
+    {% for news in context.news_info %}
+      <div>
+        <div>
+          <a href="/{{news.news_id}}">
+            <h3>{{news.news_title}}</h3>
+          </a>
+          (<a href="{{news.news_url}}" target="_blanl">{{news.news_url}}</a>)
+        </div>
+        <div>
+          {{news.news_points}} points | By: {{news.news_author}} | {{news.news_comments}} comments
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </main>
+</body>
+</html>
