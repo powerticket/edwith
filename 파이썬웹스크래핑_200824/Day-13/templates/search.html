@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+    Job Finder
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1><a href="/">Job Finder</a></h1>
+    <h3>{{ info.number }} {{ info.search }} jobs are searched!</h3>
+  </header>
+  <main>
+    {% for job in jobs %}
+      <div>
+          <h2>{{ job.0 }}</h2>
+          <h3>{{ job.1 }}</h3>
+          <h4><a href="{{ job.2 }}" target="_blank">Apply</a></h4>
+        <hr>
+      </div>
+    {% endfor %}
+  </main>
+</body>
+</html>
