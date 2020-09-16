@@ -2,6 +2,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Answer
 from .forms import QuestionForm, AnswerForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -30,7 +32,7 @@ def detail(request, pk):
     }
     return render(request, 'pybo/question_detail.html', context)
 
-
+@login_required
 def answer_create(request, pk):
     """
     pybo 답변 등록
@@ -41,6 +43,7 @@ def answer_create(request, pk):
         if form.is_valid():
             answer = form.save(commit=False)
             answer.question = question
+            answer.author = request.user
             answer.save()
             return redirect('pybo:detail', pk)
     else:
@@ -52,7 +55,7 @@ def answer_create(request, pk):
     # question.answer_set.create(content=request.POST.get('content'))
     return render(request, 'pybo/question_detail.html', context)
 
-
+@login_required
 def question_create(request):
     """
     Pybo 질문 등록
@@ -60,7 +63,9 @@ def question_create(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
-            question = form.save()
+            question = form.save(commit=False)
+            question.author = request.user
+            question.save()
             return redirect('pybo:detail', question.pk)
     else:
         form = QuestionForm()
