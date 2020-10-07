@@ -2,9 +2,7 @@
 
 - 오늘의 강의: [바닐라JS로 크롬앱 만들기](https://nomadcoders.co/javascript-for-beginners/lectures/1465) 2.1 - 2.4
 - 오늘의 과제: 위의 강의를 시청하신 후, 아래 코드 챌린지를 제출하세요.
-- 제출기간: 익일 오전 6시까지
-
-[제출](https://codesandbox.io/s/day-three-blueprint-forked-rbt68)
+- 제출기간: 익일 오전 6시까지 - [제출 완료](https://codesandbox.io/s/day-three-blueprint-forked-rbt68)
 
 
 
