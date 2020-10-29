@@ -15,18 +15,18 @@ def get_bs(url):
     return bs
 
 
-def bs_so():
+def bs_so(language):
     result = []
-    bs = get_bs(base_urls.get('so')+'jobs?r=true&q=python/')
+    bs = get_bs(base_urls.get('so')+f'jobs?r=true&q={language}/')
     jobs = bs.find_all('div', {'class':'grid--cell fl1'})
     for job in jobs:        
         result.append([job.h2.text.strip(), job.h3.span.text.strip(), base_urls.get('so')+job.a.get('href')])
     return result
 
 
-def bs_wr():
+def bs_wr(language):
     result = []
-    bs = get_bs(base_urls.get('wr')+'remote-jobs/search?term=python/')
+    bs = get_bs(base_urls.get('wr')+f'remote-jobs/search?term=language/')
     jobs = bs.find('article').find_all('li')
     for job in jobs:
         if job.find('span', {'class':'title'}):
@@ -34,9 +34,9 @@ def bs_wr():
     return result
     
 
-def bs_ro():
+def bs_ro(language):
     result = []
-    bs = get_bs(base_urls.get('ro')+'remote-dev+python-jobs/')
+    bs = get_bs(base_urls.get('ro')+f'remote-dev+{language}-jobs/')
     jobs = bs.find_all('td', {'class':'company position company_and_position'})
     for job in jobs:
         if job.h2:

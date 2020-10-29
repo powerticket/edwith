@@ -12,12 +12,13 @@ def index():
 
 @app.route('/search')
 def search():
+    language = request.args.get('search').lower()
     jobs = []
-    jobs.extend(bs_so())
-    jobs.extend(bs_wr())
-    jobs.extend(bs_ro())
+    jobs.extend(bs_so(language))
+    jobs.extend(bs_wr(language))
+    # jobs.extend(bs_ro(language))
     info = {
-        'search': request.args.get('search').lower(),
+        'language': language,
         'number': len(jobs),
     }
     return render_template('search.html', info=info, jobs=jobs)
