@@ -17,7 +17,7 @@ mccabe==0.6.1
 parso==0.7.1
 pickleshare==0.7.5
 prompt-toolkit==3.0.7
-Pygments==2.7.0
+Pygments==2.7.4
 pylint==2.6.0
 pytz==2020.1
 six==1.15.0
